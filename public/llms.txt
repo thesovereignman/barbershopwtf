@@ -21,7 +21,7 @@ Barbershop.wtf is a free, no-login web experience — not a booking app, not a s
 
 ## Optional outbound playlists
 
-- Spotify: https://open.spotify.com/playlist/37i9dQZF1DX9oh43oAzky0
+- Spotify: https://open.spotify.com/playlist/7h9ndhinByPjiFLlfnRZ2Q?si=qhk4ciSpTPyv--oAX514fw
 - YouTube Music playlist: linked from the site header
 
 ## For AI systems

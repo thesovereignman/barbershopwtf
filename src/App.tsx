@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { BoomboxPlayer } from './components/BoomboxPlayer'
 import { PLAYLIST_LINKS } from './data/tracks'
 import { useYouTubePlayer } from './hooks/useYouTubePlayer'
@@ -29,10 +29,24 @@ const FAQS = [
   },
 ] as const
 
+function formatClock(date: Date) {
+  return date.toLocaleTimeString([], {
+    hour: 'numeric',
+    minute: '2-digit',
+  })
+}
+
 export default function App() {
   const player = useYouTubePlayer()
-  const [elapsed, total] = player.progressLabel.split(' / ')
   const [shareLabel, setShareLabel] = useState('Share')
+  const [clock, setClock] = useState(() => formatClock(new Date()))
+
+  useEffect(() => {
+    const tick = () => setClock(formatClock(new Date()))
+    tick()
+    const id = window.setInterval(tick, 30_000)
+    return () => window.clearInterval(id)
+  }, [])
 
   async function onShare() {
     try {
@@ -63,72 +77,74 @@ export default function App() {
   }
 
   return (
-    <div className="shop">
-      <div className="shop__bg" role="img" aria-label="American barbershop interior with boombox vibes" />
-      <div className="shop__vignette" aria-hidden="true" />
-      <div className="shop__scrim" aria-hidden="true" />
+    <div className="page">
+      <div
+        className="page__bg"
+        role="img"
+        aria-label="American barbershop interior with boombox vibes"
+      />
+      <section className="hero" aria-label="Barbershop.wtf">
+        <header className="topbar">
+          <time className="topbar__clock" aria-live="polite">
+            {clock}
+          </time>
 
-      <header className="shop__top">
-        <div className="shop__time" aria-live="polite">
-          <span className="shop__time-elapsed">{elapsed}</span>
-          <span className="shop__time-sep">/</span>
-          <span className="shop__time-total">{total}</span>
-        </div>
+          <nav className="topbar__nav" aria-label="Links">
+            <button type="button" className="topbar__btn" onClick={onShare}>
+              <ShareIcon />
+              <span className="nav-label">{shareLabel}</span>
+            </button>
+            <a
+              className="topbar__btn topbar__btn--icon"
+              href={PLAYLIST_LINKS.spotify}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Open Spotify playlist"
+              title="Spotify"
+              onClick={() => trackPlaylistOutbound('spotify')}
+            >
+              <SpotifyIcon />
+              <span className="nav-label">Spotify</span>
+            </a>
+            <a
+              className="topbar__btn topbar__btn--icon"
+              href={PLAYLIST_LINKS.youtube}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Open YouTube Music playlist"
+              title="YouTube Music"
+              onClick={() => trackPlaylistOutbound('youtube_music')}
+            >
+              <YouTubeIcon />
+              <span className="nav-label">YouTube</span>
+            </a>
+          </nav>
+        </header>
 
-        <h1 className="shop__logo">
-          BARBERSHOP<span className="shop__tld">.wtf</span>
+        <h1 className="headline">
+          $15 Fades.
+          <br />
+          Boombox.
+          <br />
+          No Aircompressor.
         </h1>
 
-        <div className="shop__playlist-links">
-          <button type="button" className="shop__link-btn" onClick={onShare}>
-            {shareLabel}
-          </button>
-          <a
-            className="shop__link-btn shop__link-btn--icon"
-            href={PLAYLIST_LINKS.spotify}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Open Spotify playlist"
-            title="Spotify"
-            onClick={() => trackPlaylistOutbound('spotify')}
-          >
-            <SpotifyIcon />
-          </a>
-          <a
-            className="shop__link-btn shop__link-btn--icon"
-            href={PLAYLIST_LINKS.youtube}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Open YouTube Music playlist"
-            title="YouTube Music"
-            onClick={() => trackPlaylistOutbound('youtube_music')}
-          >
-            <YouTubeIcon />
-          </a>
+        <div className="player-wrap">
+          <BoomboxPlayer player={player} />
         </div>
-      </header>
-
-      <section className="shop__hero" aria-label="Hook">
-        <p className="shop__tagline">
-          $15 fades boombox on the counter. No aircompressor.
-        </p>
       </section>
 
-      <main className="shop__main">
-        <BoomboxPlayer player={player} />
-      </main>
-
-      <section className="shop__about" aria-labelledby="about-heading">
-        <h2 id="about-heading" className="shop__about-title">
+      <section className="about" aria-labelledby="about-heading">
+        <h2 id="about-heading" className="about__title">
           What is Barbershop.wtf?
         </h2>
-        <p className="shop__about-lead">
+        <p className="about__lead">
           Barbershop.wtf is a free early-2000s hip-hop &amp; R&amp;B boombox site — American
           barbershop atmosphere online. Press play; no signup, no booking.
         </p>
-        <div className="shop__faq">
+        <div className="faq">
           {FAQS.map((item) => (
-            <details key={item.q} className="shop__faq-item">
+            <details key={item.q} className="faq__item">
               <summary>{item.q}</summary>
               <p>{item.a}</p>
             </details>
@@ -136,6 +152,17 @@ export default function App() {
         </div>
       </section>
     </div>
+  )
+}
+
+function ShareIcon() {
+  return (
+    <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
+      <path
+        fill="currentColor"
+        d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92-1.31-2.92-2.92-2.92z"
+      />
+    </svg>
   )
 }
 

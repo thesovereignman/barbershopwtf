@@ -121,7 +121,7 @@ export const PLAYLIST_LINKS = {
   youtube:
     'https://www.youtube.com/playlist?list=PLiy0XOfUv4hGOgrdMw9qfCWMMK07f-P8J',
   /** Public Spotify throwback playlist */
-  spotify: 'https://open.spotify.com/playlist/37i9dQZF1DX9oh43oAzky0',
+  spotify: 'https://open.spotify.com/playlist/7h9ndhinByPjiFLlfnRZ2Q?si=qhk4ciSpTPyv--oAX514fw',
   mixFallback: 'https://www.youtube.com/watch?v=mOsyIPOUK14',
 }
 
