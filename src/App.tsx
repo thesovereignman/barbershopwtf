@@ -19,6 +19,10 @@ export default function App() {
           <span className="shop__time-total">{total}</span>
         </div>
 
+        <h1 className="shop__logo">
+          BARBERSHOP<span className="shop__tld">.wtf</span>
+        </h1>
+
         <div className="shop__playlist-links">
           <a
             className="shop__link-btn"
@@ -40,11 +44,8 @@ export default function App() {
       </header>
 
       <section className="shop__hero">
-        <h1 className="shop__logo">
-          BARBERSHOP<span className="shop__tld">.wtf</span>
-        </h1>
         <p className="shop__tagline">
-          $15 fades. Boombox on the counter. 2000s that never left.
+          $15 fades boombox on the counter. No aircompressor.
         </p>
       </section>
 
