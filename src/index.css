@@ -517,7 +517,7 @@ a {
   }
 
   .shop__hero {
-    padding: 2rem 0.5rem 9.5rem;
+    padding: 2rem 0.5rem 8.5rem;
   }
 
   .shop__tagline {
@@ -531,40 +531,61 @@ a {
     right: 0;
     bottom: 0;
     z-index: 20;
-    align-items: stretch;
+    align-items: center;
     justify-content: flex-end;
-    padding: 0;
+    padding: 0 14px calc(12px + env(safe-area-inset-bottom, 0px));
     width: 100%;
     pointer-events: none;
   }
 
   .player {
-    width: 100%;
+    width: min(100%, 420px);
+    margin: 0 auto;
     pointer-events: auto;
   }
 
   .player__card {
     grid-template-columns: auto 1fr;
-    gap: 0.8rem;
-    border-radius: 16px 16px 0 0;
-    padding: 0.8rem 0.85rem calc(0.75rem + env(safe-area-inset-bottom, 0px));
-    background: rgba(10, 8, 7, 0.72);
+    gap: 0.75rem;
+    border-radius: 999px;
+    padding: 0.65rem 1rem 0.65rem 0.65rem;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    background: rgba(10, 8, 7, 0.78);
+    backdrop-filter: blur(22px) saturate(1.2);
+    -webkit-backdrop-filter: blur(22px) saturate(1.2);
     box-shadow:
-      0 -14px 40px rgba(0, 0, 0, 0.5),
-      inset 0 1px 0 rgba(255, 255, 255, 0.08);
+      0 14px 40px rgba(0, 0, 0, 0.48),
+      0 2px 8px rgba(0, 0, 0, 0.28),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  }
+
+  .player__cover-btn,
+  .player__cover,
+  .player__cover-play {
+    border-radius: 999px;
   }
 
   .player__cover {
-    width: 72px;
-    height: 72px;
+    width: 64px;
+    height: 64px;
+  }
+
+  .player__body {
+    gap: 0.4rem;
+    padding-right: 0.25rem;
   }
 
   .player__title {
-    font-size: 1.35rem;
+    font-size: 1.25rem;
   }
 
   .player__artist {
-    font-size: 0.72rem;
+    font-size: 0.7rem;
+  }
+
+  .player__btn--play {
+    width: 2.45rem;
+    height: 2.45rem;
   }
 
   .player__volume {
