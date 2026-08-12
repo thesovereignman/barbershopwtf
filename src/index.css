@@ -602,6 +602,71 @@ a {
   }
 }
 
+/* SEO / AEO extractable copy — below the fold, quiet so hero stays brand-first */
+.shop__about {
+  position: relative;
+  z-index: 2;
+  margin-top: auto;
+  padding: 2.5rem 0 1.25rem;
+  max-width: 36rem;
+}
+
+.shop__about-title {
+  margin: 0 0 0.55rem;
+  font-family: var(--font-display);
+  font-size: clamp(1.35rem, 3vw, 1.75rem);
+  letter-spacing: 0.04em;
+  font-weight: 400;
+  color: rgba(244, 239, 232, 0.88);
+}
+
+.shop__about-lead {
+  margin: 0 0 1rem;
+  font-size: 0.95rem;
+  line-height: 1.45;
+  font-weight: 400;
+  color: var(--muted);
+  max-width: 34ch;
+}
+
+.shop__faq {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.shop__faq-item {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 0.45rem 0;
+}
+
+.shop__faq-item summary {
+  cursor: pointer;
+  list-style: none;
+  font-size: 0.82rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: rgba(244, 239, 232, 0.78);
+}
+
+.shop__faq-item summary::-webkit-details-marker {
+  display: none;
+}
+
+.shop__faq-item p {
+  margin: 0.4rem 0 0.15rem;
+  font-size: 0.88rem;
+  line-height: 1.4;
+  color: var(--muted);
+  max-width: 40ch;
+}
+
+@media (max-width: 720px) {
+  .shop__about {
+    padding: 1.5rem 0 7.5rem;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .shop__bg,
   .shop__vignette,
