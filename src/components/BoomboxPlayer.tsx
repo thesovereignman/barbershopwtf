@@ -1,6 +1,7 @@
 import type { CSSProperties } from 'react'
 import { coverUrl } from '../data/tracks'
 import type { useYouTubePlayer } from '../hooks/useYouTubePlayer'
+import { trackPlayToggle, trackTrackChange } from '../lib/analytics'
 
 type PlayerApi = ReturnType<typeof useYouTubePlayer>
 
@@ -28,13 +29,29 @@ export function BoomboxPlayer({ player }: Props) {
 
   const progress = duration > 0 ? (currentTime / duration) * 100 : 0
 
+  function onToggle() {
+    // Fire before toggle so isPlaying reflects the action about to happen
+    trackPlayToggle(!isPlaying, track.title, track.artist)
+    toggle()
+  }
+
+  function onNext() {
+    trackTrackChange('next', track.title, track.artist)
+    next()
+  }
+
+  function onPrev() {
+    trackTrackChange('prev', track.title, track.artist)
+    prev()
+  }
+
   return (
     <div className="player" role="region" aria-label="Music player">
       <div className="player__card">
         <button
           type="button"
           className="player__cover-btn"
-          onClick={toggle}
+          onClick={onToggle}
           disabled={!ready}
           aria-label={isPlaying ? 'Pause' : 'Play'}
         >
@@ -78,7 +95,7 @@ export function BoomboxPlayer({ player }: Props) {
               <button
                 type="button"
                 className="player__btn"
-                onClick={prev}
+                onClick={onPrev}
                 disabled={!ready}
                 aria-label="Previous track"
               >
@@ -87,7 +104,7 @@ export function BoomboxPlayer({ player }: Props) {
               <button
                 type="button"
                 className={`player__btn player__btn--play${isPlaying ? ' is-playing' : ''}`}
-                onClick={toggle}
+                onClick={onToggle}
                 disabled={!ready}
                 aria-label={isPlaying ? 'Pause' : 'Play'}
               >
@@ -96,7 +113,7 @@ export function BoomboxPlayer({ player }: Props) {
               <button
                 type="button"
                 className="player__btn"
-                onClick={next}
+                onClick={onNext}
                 disabled={!ready}
                 aria-label="Next track"
               >

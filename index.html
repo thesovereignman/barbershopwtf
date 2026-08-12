@@ -2,14 +2,26 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <link rel="canonical" href="https://barbershop.wtf/" />
     <link rel="icon" href="https://barbershop.wtf/favicon.svg" type="image/svg+xml" />
     <link rel="icon" type="image/png" sizes="32x32" href="https://barbershop.wtf/favicon.png" />
     <link rel="apple-touch-icon" href="https://barbershop.wtf/apple-touch-icon.png" />
     <link rel="image_src" href="https://barbershop.wtf/share.jpg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#120c0a" />
+    <meta name="color-scheme" content="dark" />
+    <meta
+      name="robots"
+      content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+    />
+    <meta name="author" content="Barbershop.wtf" />
     <meta
       name="description"
-      content="Remember the $15 fade? Early 2000s hip-hop & R&B like the shop never closed."
+      content="Remember the $15 fade? Free early-2000s hip-hop & R&B boombox site — barbershop vibes, no booking, just the shop soundtrack."
+    />
+    <meta
+      name="keywords"
+      content="barbershop music, early 2000s hip hop, throwback R&B, boombox playlist, $15 fade, nostalgia"
     />
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="en_US" />
@@ -17,10 +29,9 @@
     <meta property="og:title" content="Remember the $15 fade?" />
     <meta
       property="og:description"
-      content="Early 2000s hip-hop & R&B like the shop never closed."
+      content="Early 2000s hip-hop & R&B like the shop never closed. Free boombox vibe — press play."
     />
     <meta property="og:url" content="https://barbershop.wtf/" />
-    <!-- 1.91:1 landscape JPEG (baseline). Square og.jpg failed OpenGraph aspect checks / weak iMessage cards. -->
     <meta property="og:image" content="https://barbershop.wtf/share.jpg" />
     <meta property="og:image:secure_url" content="https://barbershop.wtf/share.jpg" />
     <meta property="og:image:type" content="image/jpeg" />
@@ -31,16 +42,100 @@
     <meta name="twitter:title" content="Remember the $15 fade?" />
     <meta
       name="twitter:description"
-      content="Early 2000s hip-hop & R&B like the shop never closed."
+      content="Early 2000s hip-hop & R&B like the shop never closed. Free boombox vibe — press play."
     />
     <meta name="twitter:image" content="https://barbershop.wtf/share.jpg" />
+    <meta name="twitter:image:alt" content="Remember the $15 fade? — Barbershop.wtf" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    <title>Barbershop.wtf — Remember the $15 fade?</title>
+    <title>Barbershop.wtf — Remember the $15 fade? Early 2000s hip-hop boombox</title>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebSite",
+            "@id": "https://barbershop.wtf/#website",
+            "url": "https://barbershop.wtf/",
+            "name": "Barbershop.wtf",
+            "description": "Free early-2000s hip-hop & R&B boombox experience with American barbershop vibes.",
+            "inLanguage": "en-US",
+            "publisher": { "@id": "https://barbershop.wtf/#organization" }
+          },
+          {
+            "@type": "Organization",
+            "@id": "https://barbershop.wtf/#organization",
+            "name": "Barbershop.wtf",
+            "url": "https://barbershop.wtf/",
+            "logo": "https://barbershop.wtf/apple-touch-icon.png",
+            "description": "Online barbershop vibe site — throwback music, not haircut bookings."
+          },
+          {
+            "@type": "WebPage",
+            "@id": "https://barbershop.wtf/#webpage",
+            "url": "https://barbershop.wtf/",
+            "name": "Remember the $15 fade?",
+            "isPartOf": { "@id": "https://barbershop.wtf/#website" },
+            "primaryImageOfPage": {
+              "@type": "ImageObject",
+              "url": "https://barbershop.wtf/share.jpg",
+              "width": 1200,
+              "height": 630
+            },
+            "description": "Press play for early-2000s hip-hop & R&B in a barbershop atmosphere. Free, no signup."
+          },
+          {
+            "@type": "MusicPlaylist",
+            "@id": "https://barbershop.wtf/#playlist",
+            "name": "Barbershop.wtf early-2000s throwbacks",
+            "description": "Corner-shop boombox classics from the early 2000s — Usher, 50 Cent, Nelly, Mary J. Blige, and more.",
+            "url": "https://barbershop.wtf/"
+          },
+          {
+            "@type": "FAQPage",
+            "@id": "https://barbershop.wtf/#faq",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "What is Barbershop.wtf?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Barbershop.wtf is a free web experience that plays early-2000s hip-hop and R&B in an American barbershop atmosphere — a boombox on the counter, not a booking site."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Is Barbershop.wtf a real barbershop I can book?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "No. It is an online vibe and music player inspired by the shop. There are no appointments, locations, or haircut bookings."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Is it free to use?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Yes. Open barbershop.wtf, hit play, and listen. Optional Spotify and YouTube Music playlist links are in the header."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "What does Remember the $15 fade mean?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "It is the cultural hook for the site — nostalgia for when a sharp fade was fifteen bucks and the boombox never stopped."
+                }
+              }
+            ]
+          }
+        ]
+      }
+    </script>
   </head>
   <body>
     <div id="root"></div>
