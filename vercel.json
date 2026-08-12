@@ -5,6 +5,20 @@
   "outputDirectory": "dist",
   "headers": [
     {
+      "source": "/share.jpg",
+      "headers": [
+        { "key": "Content-Type", "value": "image/jpeg" },
+        { "key": "Cache-Control", "value": "public, max-age=86400, stale-while-revalidate=604800" }
+      ]
+    },
+    {
+      "source": "/share-2x.jpg",
+      "headers": [
+        { "key": "Content-Type", "value": "image/jpeg" },
+        { "key": "Cache-Control", "value": "public, max-age=86400, stale-while-revalidate=604800" }
+      ]
+    },
+    {
       "source": "/og.jpg",
       "headers": [
         { "key": "Content-Type", "value": "image/jpeg" },
